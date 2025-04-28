@@ -1,86 +1,77 @@
-# ToDo! - Aplicação SSR MPA
+# ToDo! - Projeto Inicial para SSR MPA
 
-Este projeto é uma aplicação de lista de tarefas (ToDo) desenvolvida utilizando o padrão de projeto **MVC** (Model-View-Controller). A aplicação utiliza renderização no servidor (SSR - Server-Side Rendering) e segue o conceito de MPA (Multi-Page Application).
+Este projeto é um template inicial para uma aplicação ToDo, projetado para fins educacionais em ambientes de sala de aula. Ele demonstra o uso do padrão de design **MVC** (Model-View-Controller), renderização no lado do servidor (SSR) e o conceito de aplicação multi-página (MPA).
 
 ## Estrutura do Projeto
 
-O projeto está organizado de acordo com o padrão MVC, no qual cada camada tem uma preocupação específica:
+O projeto está organizado de acordo com o padrão MVC, com os seguintes componentes:
 
 - **Model (Modelo)**: Gerencia a lógica de negócios e a interação com o banco de dados.
   - Localizado em `src/models/`.
-  - Classes principais: `TodoRepository`, `Database`, `Config`.
+  - Arquivos principais: `model.ts`, `database.ts`, `config.ts`.
 
-- **View (Visão)**: Responsável pela interface com o usuário.
+- **View (Visão)**: Gerencia a interface do usuário.
   - Localizado em `views/`.
   - Utiliza templates Handlebars para renderizar as páginas.
-  - Exemplos: `newest.handlebars`, `add.handlebars`, `error.handlebars`.
 
 - **Controller (Controlador)**: Atua como intermediário entre o modelo e a visão.
   - Localizado em `src/controllers/`.
-  - Classes principais: `TodoController`, `ErrorController`.
+  - Atualmente inclui um placeholder para lógica de ordenação em `sorting.ts`.
 
-## Funcionalidades
+## Funcionalidades Atuais
 
-- Adicionar, editar e remover tarefas.
-- Listar tarefas mais recentes ou mais antigas.
-- Agrupar tarefas por tags.
-- Exibir mensagens de erro e sucesso.
+Este projeto inicial inclui:
 
-## Devcontainer
+- Configuração básica do servidor usando Express.
+- Servir arquivos estáticos do diretório `static/`.
+- Integração com Handlebars para renderização no lado do servidor.
+- Configuração de conexão com banco de dados usando a classe `Database`.
 
-Este projeto é compatível com o [Devcontainer](https://code.visualstudio.com/docs/remote/devcontainer-overview) do Visual Studio Code. Você pode utilizá-lo no ambiente GitHub Codespaces ou localmente, desde que tenha o Docker instalado.
-O arquivo `devcontainer.json` contém as configurações necessárias para criar um ambiente de desenvolvimento isolado.
+## Funcionalidades Ausentes
 
-O container inclui as seguintes dependências:
+Este projeto é um ponto de partida e ainda não inclui as seguintes funcionalidades:
 
-- Node.js
-- TypeScript
-- MongoDB (servidor e cliente)
-- ts-node
-- nodemon
+- Rotas para manipulação de operações ToDo.
+- Lógica completa dos controladores.
+- Visões totalmente implementadas.
 
 ## Estrutura de Arquivos
 
 ```plaintext
-/workspaces/todo-ssr-mpa
-├── src/
-│   ├── server.ts              # Ponto de entrada da aplicação
-│   ├── controllers/           # Controladores (C no MVC)
-│   │   ├── todoController.ts  # Lida com rotas relacionadas a tarefas
-│   │   ├── errorController.ts # Lida com erros da aplicação
-│   ├── models/                # Modelos (M no MVC)
-│   │   ├── model.ts           # Repositório e lógica de dados
-│   │   ├── database.ts        # Conexão com o banco de dados
-├── views/                     # Visões (V no MVC)
-│   ├── add.handlebars         # Página para adicionar tarefas
-│   ├── error.handlebars       # Página de erros
-│   ├── newest.handlebars      # Página de tarefas mais recentes
-│   ├── oldest.handlebars      # Página de tarefas mais antigas
-│   ├── tags.handlebars        # Página de agrupamento por tags
-│   ├── layouts/               # Layouts reutilizáveis
-│   └── partials/              # Partials reutilizáveis
-├── static/                    # Arquivos estáticos (CSS, imagens, etc.)
-│   ├── style.css              # Estilos personalizados
-│   └── bootstrap.min.css      # Estilos do Bootstrap
-├── package.json               # Configuração do projeto Node.js
-├── tsconfig.json              # Configuração do TypeScript
-└── README.md                  # Documentação do projeto
+src/
+├── server.ts              # Ponto de entrada da aplicação
+├── controllers/           # Controladores (C no MVC)
+│   └── sorting.ts         # Placeholder para lógica de ordenação
+├── models/                # Modelos (M no MVC)
+│   ├── model.ts           # Repositório de dados e lógica
+│   ├── database.ts        # Conexão com o banco de dados
+│   ├── config.ts          # Configurações
+static/                    # Arquivos estáticos (CSS, imagens, etc.)
+├── style.css              # Estilos personalizados
+├── bootstrap.min.css      # Estilos do Bootstrap
+views/                     # Visões (V no MVC)
+├── base.html              # Template base HTML
+package.json               # Configuração do projeto Node.js
+tsconfig.json              # Configuração do TypeScript
+README.md                  # Documentação do projeto
 ```
 
 ## Tecnologias Utilizadas
 
 - **Node.js**: Ambiente de execução JavaScript.
-- **Express**: Framework para criação de servidores web.
-- **Handlebars**: Motor de templates para renderização de páginas.
-- **TypeScript**: Superset do JavaScript para tipagem estática.
-- **Bootstrap**: Framework CSS para estilização.
+- **Express**: Framework para servidores web.
+- **Handlebars**: Motor de templates para renderização de visões.
+- **TypeScript**: Superset tipado do JavaScript.
 
-## Como executar o projeto
+## Como Usar
 
-1. Inicie o container do Devcontainer.
-2. Abra o terminal integrado no Visual Studio Code.
-3. Execute o comando `npm install` para instalar as dependências.
-4. Execute o comando `npm run dev` para iniciar o servidor de desenvolvimento.
-5. Acesse a aplicação no navegador em `http://localhost:3000`.
+1. Clone este repositório.
+2. Execute `npm install` para instalar as dependências.
+3. Inicie o servidor de desenvolvimento com `npm run dev`.
+4. Acesse a aplicação em `http://localhost:3000`.
+
+## Notas
+
+Este projeto é destinado a fins educacionais e não é uma aplicação completa. Os alunos são esperados a implementar as funcionalidades ausentes como parte do processo de aprendizado.
 
 
